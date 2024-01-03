@@ -1,21 +1,21 @@
 
 
-class SubTask {
-  int id;
+class AddSubtaskRequest {
+
   String taskContent;
   bool isCheched;
   int subject;
 
-  SubTask({
-    required this.id,
+  AddSubtaskRequest({
+ 
     required this.taskContent,
     required this.isCheched,
     required this.subject,
   });
 
-  factory SubTask.fromJson(Map<String, dynamic> json) {
-    return SubTask(
-      id: json['id'],
+  factory AddSubtaskRequest.fromJson(Map<String, dynamic> json) {
+    return AddSubtaskRequest(
+   
       taskContent: json['taskContent'],
       isCheched: json['isCheched'],
       subject: json['subject'],
@@ -24,7 +24,7 @@ class SubTask {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+   
       'taskContent': taskContent,
       'isCheched': isCheched,
       'subject': subject,

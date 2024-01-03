@@ -1,26 +1,28 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-class AddSubtaskRequest {
-  String taskContent;
-  bool isCheched;
-  int subject;
 
-  AddSubtaskRequest({
-    required this.taskContent,
-    required this.isCheched,
-    required this.subject,
-  });
+import '../model/sub_task_model.dart';
+// class AddSubtaskRequest {
+//   String taskContent;
+//   bool isCheched;
+//   int subject;
 
-  Map<String, dynamic> toJson() {
-    return {
-      'taskContent': taskContent,
-      'isCheched': isCheched,
-      'subject': subject,
+//   AddSubtaskRequest({
+//     required this.taskContent,
+//     required this.isCheched,
+//     required this.subject,
+//   });
+
+//   Map<String, dynamic> toJson() {
+//     return {
+//       'taskContent': taskContent,
+//       'isCheched': isCheched,
+//       'subject': subject,
      
-    };
-  }
-}
+//     };
+//   }
+// }
 
 class SubtaskApi {
   static Future<void> addSubtask(AddSubtaskRequest subtask) async {

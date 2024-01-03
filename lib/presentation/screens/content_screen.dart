@@ -1,9 +1,10 @@
 
-import 'package:api_test/curd/add_content.dart';
 import 'package:api_test/curd/update_content.dart';
 import 'package:api_test/data/services/services_content.dart';
 import 'package:api_test/model/task_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../model/sub_task_model.dart';
 
 class SubTaskScreen extends StatefulWidget {
   final int subjectId;
@@ -59,6 +60,7 @@ class _SubTaskScreenState extends State<SubTaskScreen> {
             taskContent: 'add from app',
             isCheched: false,
             subject: subjectId,
+
           ));
           fetchData(); // Refresh the subtask list after adding a new subtask
         },
