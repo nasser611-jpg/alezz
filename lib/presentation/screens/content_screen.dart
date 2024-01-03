@@ -10,11 +10,14 @@ class SubTaskScreen extends StatefulWidget {
   const SubTaskScreen({Key? key, required this.subjectId,}) : super(key: key);
 
   @override
-  _SubTaskScreenState createState() => _SubTaskScreenState();
+  _SubTaskScreenState createState() => _SubTaskScreenState(subjectId: subjectId);
 }
 
 class _SubTaskScreenState extends State<SubTaskScreen> {
+  final int subjectId;
   late List<SubTask> subtasks;
+
+  _SubTaskScreenState({required this.subjectId});
 
   @override
   void initState() {
@@ -55,7 +58,7 @@ class _SubTaskScreenState extends State<SubTaskScreen> {
           SubTaskApiService.addSubtask(AddSubtaskRequest(
             taskContent: 'add from app',
             isCheched: false,
-            subject: 10,
+            subject: subjectId,
           ));
           fetchData(); // Refresh the subtask list after adding a new subtask
         },
