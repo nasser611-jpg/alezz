@@ -6,7 +6,8 @@ import 'package:api_test/model/task_model.dart';
 import 'package:flutter/material.dart';
 
 class SubTaskScreen extends StatefulWidget {
-  const SubTaskScreen({Key? key,}) : super(key: key);
+  final int subjectId;
+  const SubTaskScreen({Key? key, required this.subjectId,}) : super(key: key);
 
   @override
   _SubTaskScreenState createState() => _SubTaskScreenState();
@@ -24,7 +25,7 @@ class _SubTaskScreenState extends State<SubTaskScreen> {
 
   Future<void> fetchData() async {
     try {
-      final fetchedSubtasks = await SubTaskApiService.fetchSubtasks();
+      final fetchedSubtasks = await SubTaskApiService.fetchSubtasks(widget.subjectId);
       setState(() {
         subtasks = fetchedSubtasks;
       });
@@ -82,7 +83,8 @@ class SubTaskCard extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () {
-                UpdateContent(subtask: subtask).showUpdateContentDialog(context, subtask.id, subtask.taskContent);
+                UpdateContent(subtask: subtask).showUpdateContentDialog(
+                  context, subtask.id, subtask.taskContent);
               },
             ),
             IconButton(

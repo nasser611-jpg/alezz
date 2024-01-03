@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class SubtaskApiEditionService {
   static Future<void> updateContent(int subtaskId, String updatedContent,) async {
     final updateContentRequest = {
-  "taskContent": updatedContent.toString(),
+  "taskContent": updatedContent,
 
   "subject": 4
 };

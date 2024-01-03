@@ -1,13 +1,11 @@
-
 import 'package:api_test/data/services/services_subject.dart';
 import 'package:api_test/model/task_model.dart';
 import 'package:api_test/presentation/screens/content_screen.dart';
 import 'package:flutter/material.dart';
 
-
-
 class TaskScreen extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _TaskScreenState createState() => _TaskScreenState();
 }
 
@@ -43,6 +41,17 @@ class _TaskScreenState extends State<TaskScreen> {
             return Text(subTask.taskContent);
           }).toList(),
         ),
+        onTap: () {
+          print(task.id);
+          // Navigate to SubTaskScreen with the subject ID
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              
+              builder: (context) => SubTaskScreen(subjectId: task.id),
+            ),
+          );
+        },
       ),
     );
   }
@@ -62,12 +71,7 @@ class _TaskScreenState extends State<TaskScreen> {
           ),
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SubTaskScreen(),
-                ),
-              );
+              // You can remove this IconButton since the onTap of ListTile is handling navigation now
             },
             icon: const Icon(Icons.screenshot),
           )
@@ -77,7 +81,6 @@ class _TaskScreenState extends State<TaskScreen> {
           ? ListView.builder(
               itemCount: tasks.length,
               itemBuilder: (context, index) {
-              
                 return taskCard(task: tasks[index]);
               },
             )
@@ -87,8 +90,3 @@ class _TaskScreenState extends State<TaskScreen> {
     );
   }
 }
-
-
-
-
-

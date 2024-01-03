@@ -5,11 +5,15 @@ import 'package:api_test/model/task_model.dart';
 import 'package:http/http.dart' as http;
 
 class SubTaskApiService {
-  static Future<List<SubTask>> fetchSubtasks() async {
-    final response = await http
-        .get(Uri.parse('http://idexpro-001-site3.ctempurl.com/api/Todo'));
+  static Future<List<SubTask>> fetchSubtasks(int subjectId) async {
+   
+    final response = await http.get(
+      Uri.parse('http://idexpro-001-site3.ctempurl.com/api/Todo?subject=$subjectId'),
+      
+    );
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200) { 
+      print('in Servicess$subjectId');
       List<dynamic> data = json.decode(response.body);
       return data.map((subtask) => SubTask.fromJson(subtask)).toList();
     } else {
